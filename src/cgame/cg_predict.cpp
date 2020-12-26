@@ -1021,6 +1021,8 @@ void CG_PredictPlayerState( void ) {
 		// bug by actually setting tracemask when spectating :x
 		cg_pmove.tracemask = MASK_PLAYERSOLID & ~CONTENTS_BODY;
 		cg_pmove.trace = CG_TraceCapsule_World;
+	} else if ( cg_pmove.ps->powerups[PW_GHOST] ) {
+		cg_pmove.tracemask = MASK_PLAYERSOLID & ~CONTENTS_BODY;
 	} else {
 		cg_pmove.tracemask = MASK_PLAYERSOLID;
 	}

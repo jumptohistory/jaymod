@@ -889,6 +889,7 @@ typedef enum {
 	PW_OPS_CLASS_3,
 
 	PW_ADRENALINE,
+	PW_GHOST,
 
 	PW_BLACKOUT = 14,		// OSP - spec blackouts. FIXME: we don't need 32bits here...relocate
 	PW_MVCLIENTLIST = 15,	// OSP - MV client info.. need a full 32 bits

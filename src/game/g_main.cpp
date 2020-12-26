@@ -278,6 +278,9 @@ vmCvar_t        g_warnDecay;
 vmCvar_t        g_warnMuteLevel;
 vmCvar_t        g_warnBanLevel;
 
+// Gaymod 
+vmCvar_t        g_spawnGhost;
+
 /*********************
 * End Jaymod Cvars   *
 *********************/
@@ -377,6 +380,9 @@ cvarTable_t		gameCvarTable[] = {
     { &g_warnDecay,         "g_warnDecay",          "1",        0 },
     { &g_warnMuteLevel,     "g_warnMuteLevel",      "50",       0 },
     { &g_warnBanLevel,      "g_warnBanLevel",       "100",      0 },
+
+	// Gaymod
+	{ &g_spawnGhost,		"g_spawnGhost",			"0",		CVAR_ARCHIVE },
 
     // Some useful mod-info cvars.
     { NULL, "mod_binary",  JAYMOD_buildTarget, CVAR_SERVERINFO | CVAR_ROM },

@@ -661,7 +661,7 @@ float VectorDistanceSquared(vec3_t v1, vec3_t v2);
 
 // Jaybird - add rint to repetoir (sp?)
 #ifdef _MSC_VER
-int rint (double x);
+//int rint (double x);
 #endif
 
 void AxisClear( vec3_t axis[3] );

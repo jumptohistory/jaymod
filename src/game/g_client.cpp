@@ -2653,13 +2653,24 @@ void ClientSpawn( gentity_t *ent, qboolean revived )
 	// TTimo keep it isolated from spectator to be safe still
 	if( client->sess.sessionTeam != TEAM_SPECTATOR ) {
 		// Xian - Moved the invul. stuff out of SetWolfSpawnWeapons and put it here for clarity
-		if ( g_fastres.integer == 1 && revived )
+		if ( g_fastres.integer == 1 && revived ) {
 			client->ps.powerups[PW_INVULNERABLE] = level.time + 1000; 
 		// Jaybird - g_spawnInvul
-		else if(revived) 
+		} else if(revived) {
  			client->ps.powerups[PW_INVULNERABLE] = level.time + 3000; 
-		else
+		} else {
 			client->ps.powerups[PW_INVULNERABLE] = level.time + (g_spawnInvul.integer * 1000);
+
+			if ( g_spawnGhost.value ) {
+				if ( g_spawnGhost.value > 0.0 ) {
+					client->ps.powerups[PW_GHOST] = level.time + g_spawnGhost.value * 1000;
+				} else if ( g_spawnGhost.integer == -1 ) {
+					client->ps.powerups[PW_GHOST] = INT_MAX;
+				}
+				ent->r.contents = CONTENTS_CORPSE;
+				ent->clipmask = MASK_DEADSOLID;
+			}
+		}
 	}
 	// End Xian
 

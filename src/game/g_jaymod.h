@@ -109,6 +109,9 @@ extern vmCvar_t g_banners;
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Gaymod 
+extern vmCvar_t g_spawnGhost;
+
 #define G_SNAP_CLIENT_ENDFRAME     0x0001
 #define G_SNAP_CLIENT_THINK        0x0002
 #define G_SNAP_CLIENT_EXTRAPOLATE  0x0004

@@ -1613,7 +1613,8 @@ float VectorDistanceSquared(vec3_t v1, vec3_t v2) {
 }
 
  
-#ifdef _MSC_VER
+//#ifdef _MSC_VER
+#if 0
  
 	int rint (double x) {  
 				                 

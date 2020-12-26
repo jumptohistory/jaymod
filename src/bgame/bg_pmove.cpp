@@ -5958,6 +5958,10 @@ void PmoveSingle (pmove_t *pmove) {
 		pm->ps->eFlags &= ~EF_ZOOMING;
 	}
 
+	if ( pm->ps->powerups[PW_INVULNERABLE] || pm->ps->powerups[PW_GHOST] ) {
+		pm->tracemask &= ~CONTENTS_BODY;
+	}
+
 	// make sure walking button is clear if they are running, to avoid
 	// proxy no-footsteps cheats
 	if ( abs( pm->cmd.forwardmove ) > 64 || abs( pm->cmd.rightmove ) > 64 ) {

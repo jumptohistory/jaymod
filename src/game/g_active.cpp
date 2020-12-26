@@ -2070,6 +2070,11 @@ void ClientEndFrame( gentity_t *ent ) {
 
 			if ( ent->client->ps.powerups[ i ] < level.time ) {
 				ent->client->ps.powerups[ i ] = 0;
+
+				if ( i == PW_GHOST && !( ent->client->ps.eFlags & ( EF_DEAD | EF_PLAYDEAD ) ) ) {
+					ent->r.contents = CONTENTS_BODY;
+					ent->clipmask = MASK_PLAYERSOLID;
+				} 
 			}
 		}
 
