@@ -280,6 +280,7 @@ vmCvar_t        g_warnBanLevel;
 
 // Gaymod 
 vmCvar_t        g_spawnGhost;
+vmCvar_t        g_friendlyRepulsiveForce;
 
 /*********************
 * End Jaymod Cvars   *
@@ -383,6 +384,7 @@ cvarTable_t		gameCvarTable[] = {
 
 	// Gaymod
 	{ &g_spawnGhost,		"g_spawnGhost",			"0",		CVAR_ARCHIVE },
+	{ &g_friendlyRepulsiveForce, "g_friendlyRepulsiveForce", "0", CVAR_ARCHIVE },
 
     // Some useful mod-info cvars.
     { NULL, "mod_binary",  JAYMOD_buildTarget, CVAR_SERVERINFO | CVAR_ROM },

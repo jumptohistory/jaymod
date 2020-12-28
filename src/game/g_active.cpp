@@ -1943,20 +1943,30 @@ extern vec3_t	playerMins, playerMaxs;
 
 void WolfRevivePushEnt( gentity_t *self, gentity_t *other ) {
 	vec3_t	dir, push;
+	vec_t   amount;
 
 	VectorSubtract( self->r.currentOrigin, other->r.currentOrigin, dir );
 	dir[2] = 0;
 	VectorNormalizeFast( dir );
 
-	VectorScale( dir, WR_PUSHAMOUNT, push );
+	if ( !self->client || !other->client ) {
+		amount = WR_PUSHAMOUNT;
+	} else if ( self->r.contents == CONTENTS_CORPSE || other->r.contents == CONTENTS_CORPSE || self->client->sess.sessionTeam != other->client->sess.sessionTeam ) {
+		amount = WR_PUSHAMOUNT;
+	} else {
+		amount = g_friendlyRepulsiveForce.value;
+	}
+
+
+	VectorScale( dir, amount, push );
 
 	if ( self->client ) {
 		VectorAdd( self->s.pos.trDelta, push, self->s.pos.trDelta );
 		VectorAdd( self->client->ps.velocity, push, self->client->ps.velocity );
 	}
 
-	VectorScale( dir, -WR_PUSHAMOUNT, push );
-	push[2] = WR_PUSHAMOUNT/2;
+	VectorScale( dir, -amount, push );
+	push[2] = amount/2;
 
 	VectorAdd( other->s.pos.trDelta, push, other->s.pos.trDelta );
 	VectorAdd( other->client->ps.velocity, push, other->client->ps.velocity );
